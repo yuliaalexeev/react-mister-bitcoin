@@ -1,0 +1,17 @@
+.mister-bitcoin-app{
+    margin-top: 10px;
+    &-icon{
+        height: 50px;
+        width: 50px;
+        display: inline-block;
+        vertical-align: middle;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50px;
+        color: #fff;
+        &-btc{
+            background: #f4b738;
+        }
+    }
+}
