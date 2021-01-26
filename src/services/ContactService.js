@@ -1,4 +1,14 @@
-const gContacts = [
+import { storageService } from './storageService.js';
+import { makeId } from './utilService.js'
+
+export const contactService = {
+    getContacts,
+    getById,
+    save,
+    getEmptyContact
+}
+
+const gDefaultContacts = [
     {
         "_id": "5a56640269f443a5d64b32ca",
         "name": "Ochoa Hyde",
@@ -55,12 +65,11 @@ const gContacts = [
     }
 ]
 
-function filter(term) {
-   // term = term.toLowerCase()
+const STORAGE_KEY = 'contacts_DB'
+let gContacts = _loadContacts()
 
-    console.log('term', term);
+function filter(term) {
     return gContacts.filter(contact => {
-        //console.log('contact name',  contact.name.toLowerCase())
         return contact.name.toLowerCase().includes(term) ||
             contact.phone.toLowerCase().includes(term) ||
             contact.email.toLowerCase().includes(term)
@@ -69,12 +78,9 @@ function filter(term) {
 
 function getContacts(filterBy = null) {
     let contactsToReturn = gContacts;
-    console.log('filter service by', filterBy)
     if (filterBy) {
         contactsToReturn = filter(filterBy)
-        console.log('insite dilter by', filterBy)
     }
-    console.log('returning contactsToReturn', contactsToReturn)
     return contactsToReturn;
 }
 
@@ -88,6 +94,18 @@ function getContacts(filterBy = null) {
 //     })
 //   }
 
+function save(contactToSave){
+    if(contactToSave._id) {
+        const idx = gContacts.findIndex(contact => contact._id === contactToSave._id)
+        gContacts.splice(idx, 1, contactToSave)
+    } else {
+        contactToSave._id = makeId()
+        gContacts.push(contactToSave)
+    }
+    storageService.store(STORAGE_KEY, gContacts) 
+    return Promise.resolve(contactToSave);
+}
+
 function getById(id) {
     try {
         const contact = gContacts.find(contact => contact._id === id)
@@ -97,7 +115,17 @@ function getById(id) {
     }
 }
 
-export const contactService = {
-    getContacts,
-    getById
+function getEmptyContact(){
+    return Promise.resolve({
+        name: '',
+        email: '',
+        phone: ''
+    })
+}
+
+function _loadContacts() {
+    let contacts = storageService.load(STORAGE_KEY)
+    if (!contacts || !contacts.length) contacts = gDefaultContacts
+    storageService.store(STORAGE_KEY, contacts)
+    return contacts
 }

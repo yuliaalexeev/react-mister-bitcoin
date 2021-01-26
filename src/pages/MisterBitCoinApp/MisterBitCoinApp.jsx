@@ -2,8 +2,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ChartList } from '../../cmps/ChartList/ChartList';
-import { userService } from '../../services/UserServices';
-import { bitcoinService } from '../../services/BitcoinService';
+import { userService } from '../../services/userServices';
+import { bitcoinService } from '../../services/bitcoinService';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoins } from '@fortawesome/free-solid-svg-icons';
 import { faBitcoin } from '@fortawesome/free-brands-svg-icons';

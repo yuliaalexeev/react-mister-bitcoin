@@ -13,8 +13,6 @@ export class ContactFilter extends Component {
         const value = ev.target.value
         this.setState({ [field]: value }, () => {
             //state[field]= value
-            console.log('[field]', [field]);
-            console.log('insite on set filter', this.state);
             this.props.onSetFilter({ ...this.state })
         })
 

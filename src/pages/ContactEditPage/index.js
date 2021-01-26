@@ -1,1 +1,1 @@
-export { default } from './ContactEditPage'
+export { ContactEditPage } from './ContactEditPage'

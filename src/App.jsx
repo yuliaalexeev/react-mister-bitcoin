@@ -14,7 +14,7 @@ export function App() {
       <Router>
         <AppHeader />
         <Switch>
-          <Route path="/contact/edit/:id" component={ ContactEditPage } />
+          <Route path="/contact/edit/:id?" component={ ContactEditPage } />
           <Route path="/contact/:id" render={ props => <ContactDetailsPage { ...props }  /> } />
           <Route path="/contact" component={ ContactPage } />
           <Route path="/" component={ MisterBitCoinApp } />

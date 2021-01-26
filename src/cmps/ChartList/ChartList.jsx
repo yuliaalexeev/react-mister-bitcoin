@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { Chart } from '../../cmps/Chart/Chart';
-import { bitcoinService } from '../../services/BitcoinService';
+import { bitcoinService } from '../../services/bitcoinService';
 import './ChartList.scss'
 
 export class ChartList extends Component {
