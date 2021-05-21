@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { contactService } from '../../services/contactService';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPhone, faEnvelope, faEdit, faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons';
+import { faPhone, faEnvelope, faEdit, faLongArrowAltLeft, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+
 import { Link } from 'react-router-dom';
+import { TransferFunds } from '../../cmps/TransferFunds/TransferFunds';
 
 export class ContactDetailsPage extends Component {
     state = {
@@ -11,8 +13,9 @@ export class ContactDetailsPage extends Component {
     
     async componentDidMount() {
         const contact = await contactService.getById(this.props.match.params.id)
-        this.setState({ contact })
-        //eventBus.emit('details mounted', robot)
+        setTimeout( () => {
+            this.setState({ contact })
+        }, 1500)
     }
 
     onBack = () => {
@@ -27,18 +30,17 @@ export class ContactDetailsPage extends Component {
 
     render() {
         const { contact } = this.state
-        if (!contact) return <div>Loading...</div>
-        return <div className="contact-details">
-            <img src={ `https://robohash.org/${contact._id}?set=set5` } alt="" />
+        if (!contact) return <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+        return <div className="container contact-details">
             <h3 className="contact-details-name">{contact.name}</h3>
-            <div><FontAwesomeIcon icon={faEnvelope} size="xs" /> {contact.email}</div>
-            <div><FontAwesomeIcon icon={faPhone} size="xs" /> {contact.phone}</div>
+            <img src={ `https://robohash.org/${contact._id}?set=set5` } alt="" />
+            <div><FontAwesomeIcon icon={faEnvelope} size="s" /> {contact.email}</div>
+            <div><FontAwesomeIcon icon={faPhone} size="s" /> {contact.phone}</div>
             
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, rem fugiat eaque non vero sapiente natus veritatis blanditiis dignissimos ipsum nobis nisi odio similique, iusto dolores et. Quam, itaque quidem.</p>
-            <Link to={ `/contact/edit/${contact._id}` }><FontAwesomeIcon icon={faEdit} size="xs" /></Link> 
-            <button onClick={ this.onBack }><FontAwesomeIcon icon={faLongArrowAltLeft} size="xs" /></button>
-            <button onClick={ this.remove }>Remove</button>
-
+            <Link to={ `/contact/edit/${contact._id}` }><FontAwesomeIcon icon={faEdit} size="s" /></Link> 
+            <button onClick={ this.onBack }><FontAwesomeIcon icon={faLongArrowAltLeft} size="s" /></button>
+            <button onClick={ this.remove }><FontAwesomeIcon icon={faTrashAlt} size="s" /></button>
+            <TransferFunds data={contact}/>
         </div>
     }
 }

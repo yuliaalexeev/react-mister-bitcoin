@@ -29,9 +29,9 @@ export class ContactPage extends Component {
     render() {
         const { contacts } = this.state
         return(
-            <div className="contacts">
-                <h2>Contacts</h2>
-                <ContactFilter  onSetFilter={ this.onSetFilter } />
+            <div className="container contacts">
+                <h2 className="main-title">Contacts</h2>
+                <ContactFilter onSetFilter={ this.onSetFilter } />
                 { contacts && <ContactList contacts={ contacts } /> }
             </div>
         )

@@ -21,7 +21,7 @@ export class ContactFilter extends Component {
     render() {
         const { term } = this.state;
         return <form className="robot-filter">
-                <input type="text" name="term" value={ term } placeholder="Search" onChange={ this.onChangeHandler } />
+                <input type="text" className="form-input" name="term" value={ term } placeholder="Search" onChange={ this.onChangeHandler } />
                </form>
     }
 }

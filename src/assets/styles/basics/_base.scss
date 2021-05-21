@@ -2,17 +2,14 @@
   box-sizing: border-box;
 }
 
-html {
-  font-family: OpenSans, sans-serif;
+body{
+  font-family: 'Roboto', sans-serif;
+  color: $clr3;
+  background-color: $clr2;
+  margin: 0;
   font-size: 16px;
-  scroll-behavior: smooth;
 }
 
-body {
-  margin: 0;
-  min-height: 100vh;
-  overflow: hidden;
-}
 
 img {
   max-width: 100%;

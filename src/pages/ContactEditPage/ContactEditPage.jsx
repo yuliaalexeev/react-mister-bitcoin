@@ -46,13 +46,13 @@ export class ContactEditPage extends Component {
     render() {
         const { name, email, phone } = this.state.contact
         return(
-            <form className="contact-edit" onSubmit={ this.onSaveContact }>
+            <form className="container contact-edit" onSubmit={ this.onSaveContact }>
                 <label>Name:</label>
-                <input type="text" name="name" value={ name } onChange={ this.handleChange } />
+                <input type="text" className="form-input" name="name" value={ name } onChange={ this.handleChange } />
                 <label>Email:</label>
-                <input type="text" name="email" value={ email } onChange={ this.handleChange } />
+                <input type="text" className="form-input" name="email" value={ email } onChange={ this.handleChange } />
                 <label>Phone:</label>
-                <input type="tel" name="phone" value={ phone } onChange={ this.handleChange } />
+                <input type="tel" className="form-input" name="phone" value={ phone } onChange={ this.handleChange } />
                 <button>Save</button>
                 <button onClick={ this.onBack }><FontAwesomeIcon icon={faLongArrowAltLeft} size="xs" /></button>
             </form>

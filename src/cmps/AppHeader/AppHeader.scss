@@ -1,11 +1,22 @@
 .app-header{
-    background: #44465d;
-    color: #fff;
-    border-radius: 10px;
+    background: #fff;
     padding: 10px;
+    &-inner{
+        display: flex;
+        align-items: baseline;
+        &-logo{
+            flex-grow: 1;
+        }
+    }
     a{
         margin-right: 20px;
-        color: #fff;
         text-decoration: none;
     }
+}
+
+.sign-up-link{
+    border-radius: 5px;
+    border: 1px solid  #0c3c4c;
+    color:  #0c3c4c;
+    padding: .5rem;
 }

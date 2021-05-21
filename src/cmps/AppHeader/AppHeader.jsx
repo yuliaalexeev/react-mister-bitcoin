@@ -9,11 +9,13 @@ class _AppHeader extends Component {
         return (
             <>
                 <nav className="app-header" >
-                    <NavLink exact activeClassName="active" to="/">Home</NavLink>
-                    <NavLink to="/contact">Contacts</NavLink>
-                    {/* <NavLink to="/about">About</NavLink> */}
-                    {/* <button onClick={ this.onBack }>Back</button> */}
-                    <NavLink exact activeClassName="active" to="/">Bitcoin</NavLink>
+                    <div className="app-header-inner container">
+                        <NavLink exact activeClassName="active" className="app-header-inner-logo" to="/"><h1>Bitcoin</h1></NavLink>
+                        <NavLink to="/contact" >Contacts</NavLink>
+                        <NavLink className="sign-up-link" to="/signup">Sign up</NavLink>
+                        {/* <NavLink to="/about">About</NavLink> */}
+                        {/* <button onClick={ this.onBack }>Back</button> */}
+                    </div>
                 </nav>
                 
             </>
